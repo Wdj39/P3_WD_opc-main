@@ -1,0 +1,467 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+section {
+	margin: 50px 0
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+
+}
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+li:hover {
+	color: #B1663C;
+}
+#introduction {
+	display: flex;
+	align-items: center;
+}
+#introduction figure {
+	flex: 1
+}
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1
+}
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+.portfolio-title{
+	display: flex;
+	justify-content: center;
+	gap: 25px;
+	align-items: baseline;
+}
+#portfolio h2 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.filters {
+	display: flex;
+	justify-content: center;
+	margin: 40px 0;
+  }
+  
+.filter__btn, .btn-admin {
+	font-family: "Syne";
+	padding: 10px 20px;
+	margin: 0 15px;
+	border: 1px solid #1D6154;
+	border-radius: 25px;
+	color: #1D6154;
+	background-color: white;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.filter__btn:hover, .btn-admin:hover {
+	color: white;
+	background-color: #1D6154;
+	scale: 1.05;
+}
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.gallery img {
+	width: 100%;
+
+}
+#contact {
+	width: 50%;
+margin: auto;
+}
+#contact > * {
+	text-align: center;
+
+}
+#contact h2{
+	margin-bottom: 20px;
+}
+#contact form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#contact label {
+	margin: 2em 0 1em 0;
+}
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
+/*----MODAL-----*/
+	/*part.1*/
+/* Style général pour la modale */
+.modale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    display: none; /* Caché par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-sct{
+	width: 100%;
+}
+/* Contenu de la modale */
+.modale-wrapper {
+    background-color: #fff;
+    padding: 60px;
+	width: 30%;
+	height: 65%;
+	padding-left: 58px;
+    padding-right: 50px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Style de la croix de fermeture */
+.js-modale-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+}
+#photo-gallery-section{
+	width: 100%;
+}
+
+/* Style de la galerie photo */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Trois colonnes pour les images */
+    gap: 10px;
+    margin: 20px 0;
+	margin-bottom: 96px;
+}
+
+.photo-item {
+    position: relative;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+	max-width: 100px; /* Limiter las largeur des images */
+    max-height: 100px; /* Limiter la hauteur des images */
+}
+
+/* Icône de suppression */
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Bouton pour ajouter une photo */
+.add-pht-bt{
+	display: flex;
+	justify-content: center;
+	border-top: solid 1px black;
+    padding-top: 35px;
+}
+.add-photo-btn {
+    display: block;
+    width: 55%;
+    padding: 13px;
+    background-color:#1D6154;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+.add-photo-btn:hover {
+    background-color:#1D6154;
+}
+
+h4{
+	font-size: 25px;
+	color: #000000;
+	text-align: center;
+	margin-bottom: 10%;
+}
+
+/*part.2*/
+
+.back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 24px; /* Taille de la flèche */
+    color: #333; /* Couleur de la flèche */
+}
+
+.back-arrow i {
+    pointer-events: none; /* Empêche les événements de pointer sur l'icône elle-même, pour que tout le bouton soit cliquable */
+}
+
+.modale-wrapper .add-photo-section{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	gap: 20px
+}
+.modale-wrapper .add-title-section{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	gap: 20px
+} 
+.modale-wrapper .add-category-section {
+    margin-bottom: 20px;
+	margin-top: 20px;
+	gap: 20px
+}
+
+.image-placeholder {
+	padding: 10px;
+    text-align: center;
+	display: flex;
+	flex-direction: column;
+	background-color: #E8F1F7;
+	margin-bottom: 10px;
+}
+
+.image-placeholder i {
+    font-size: 5em;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.aj-ft-bt{
+	display: flex;
+	justify-content: center
+}
+.upload-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:#b8c5cd;
+    color:#333;
+    border: none;
+	width: 55%;
+    border-radius: 20px;
+    cursor: pointer;
+	font-size: large;
+}
+
+.help-text {
+    font-size: 0.9em;
+    color: black;
+    margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.add-title-section input{
+	padding: 10px;
+    font-size: 16px;
+	margin-top: 20px;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+} 
+.add-category-section select {
+	padding: 10px;
+    font-size: 16px;
+	margin-top: 20px;
+	margin-bottom: 44px;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.ad-ft-bt{
+	display: flex;
+	justify-content: center;
+	border-top: solid 1px black;
+}
+
+.submit-btn {
+    display: block;
+    width: 55%;
+    padding: 13px;
+    background-color:#ababab;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 35px;
+}
+
+/*----MODAL_FIN-----*/
+
+/*Mode édition*/
+#edition-mod {
+    background-color: #000000; /* Couleur de fond noir */
+    color: #ffffff; /* Couleur du texte blanc */
+	padding: 15px;
+	text-align: center;
+	margin: 0;
+}
+
+#edition-mod h3 {
+	display: inline-block;
+	font-size: 14px;
+	margin: 0;
+	color: white;
+	text-align: center;
+}
+
+#edition-mod a.js-modale-close {
+    display: inline-block; /* Place l'icône en ligne avec le texte */
+    color: #ffffff; /* Couleur de l'icône en blanc */
+    text-decoration: none; /* Enlève la décoration de texte */
+    vertical-align: middle; /* Aligne l'icône au milieu */
+    font-size: 1.5em; /* Ajuste la taille de l'icône */
+    margin-right: 10px; /* Espace à droite de l'icône */
+}

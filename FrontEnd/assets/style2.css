@@ -1,0 +1,135 @@
+/* Styles généraux pour le corps et les titres */
+body {
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+img{
+    width: 50%;
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+;
+}
+h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+}
+
+/* Styles pour le header et la navigation */
+header {
+    background-color: #fff;
+    padding: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Styles spécifiques pour la section de connexion */
+#login {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    color: #1D6154;
+}
+
+#login h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+}
+
+#login form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login label {
+    font-weight: 700;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#login input[type="submit"] {
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 2em auto;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    border-radius: 60px
+}
+
+#login input[type="submit"]:hover {
+    background-color: #555;
+}
+p{
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+    padding: 20px;
+    text-align: right;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+footer nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
