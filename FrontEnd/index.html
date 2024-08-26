@@ -54,11 +54,10 @@
 			</div>
 
 			<!--MODAL-->
-
-			<aside id="modale" class="modale" aria-hidden="true" style="display: none;">
+			<aside aria-hidden="true" class="modale" id="modale" style="display: none;">
 				<div class="modale-wrapper js-modale-stop">
 					<div class="modal-sct">
-						<a href="#" class="js-modale-close"><i class="fa fa-times"></i></a>
+						<a class="js-modale-close" href="#"><i class="fa fa-times"></i></a>
 						<!-- Section Galerie photo -->
 						<div id="photo-gallery-section">
 							<h4>Galerie photo</h4>
@@ -69,54 +68,51 @@
 								<button class="add-photo-btn" onclick="showAddPhotoSection()">Ajouter une photo</button>
 							</div>
 						</div>
-			
 						<!-- Section Ajout photo (masquée par défaut) -->
 						<div id="add-photo-section" style="display: none;">
-    						<!-- Flèche de retour en arrière -->
-    						<div class="back-arrow" onclick="showPhotoGallerySection()">
-        						<i class="fa fa-arrow-left"></i>
-    						</div>
-    						<h4>Ajout photo</h4>
-    						<div class="add-photo-content">
-        						<!-- Formulaire d'ajout de photo -->
-        						<form id="uploadForm" enctype="multipart/form-data">
-            						<!-- Section pour ajouter une image -->
-            						<div class="image-placeholder">
-                						<i class="fa fa-image"></i>
-                						<input type="file" id="file" name="file" accept="image/*" style="display: none;" required>
-                						<div class="aj-ft-bt">
-                    						<button type="button" id="upload-btn" class="upload-btn" onclick="document.getElementById('file').click()">+ Ajouter une photo</button>
-                						</div>
-                						<p class="help-text">jpg, png : 4mo max</p>
-            						</div>
-
-            						<!-- Section pour ajouter un titre -->
-            						<div class="add-title-section">
-                						<label for="title">Titre</label>
-                						<input type="text" id="title" name="title" placeholder="" required>
-            						</div>
-
-            						<!-- Section pour sélectionner la catégorie -->
-            						<div class="add-category-section">
-                						<label for="category">Catégorie</label>
-                						<select id="category" name="category" required>
-                    					<!-- Les options peuvent être chargées dynamiquement ici -->
-                    						<option value="1">Objets</option>
-                    						<option value="2">Appartements</option>
-											<option value="3">hotels & restaurant</option>
-                						</select>
-            						</div>
-
-            						<!-- Bouton pour soumettre le formulaire -->
-            						<div class="ad-ft-bt">
-                						<button type="submit" id="submit-photo" class="submit-btn">Valider</button>
-            						</div>
-        						</form>
-    						</div>
+							<!-- Flèche de retour en arrière -->
+							<div class="back-arrow" onclick="showPhotoGallerySection()">
+								<i class="fa fa-arrow-left"></i>
+							</div>
+							<h4>Ajout photo</h4>
+							<div class="add-photo-content">
+								<!-- Formulaire d'ajout de photo -->
+								<form enctype="multipart/form-data" id="uploadForm">
+									<!-- Section pour ajouter une image -->
+									<div class="image-placeholder">
+										<i class="fa fa-image"></i>
+										<input accept="image/*" id="file" name="file" required="" style="display: none;" type="file"/>
+										<div class="aj-ft-bt">
+											<button class="upload-btn" id="upload-btn" type="button">+ Ajouter une photo</button>
+										</div>
+										<p class="help-text">jpg, png : 4mo max</p>
+									</div>
+									<!-- Section pour ajouter un titre -->
+									<div class="add-title-section">
+										<label for="title">Titre</label>
+										<input id="title" name="title" placeholder="" required="" type="text"/>
+									</div>
+									<!-- Section pour sélectionner la catégorie -->
+									<div class="add-category-section">
+										<label for="category">Catégorie</label>
+										<select id="category" name="category" required="">
+											<!-- Les options peuvent être chargées dynamiquement ici -->
+											<option value="1">Objets</option>
+											<option value="2">Appartements</option>
+											<option value="3">Hotels & Restaurants</option>
+										</select>
+									</div>
+									<!-- Bouton pour soumettre le formulaire -->
+									<div class="ad-ft-bt">
+										<button class="submit-btn" id="submit-photo" type="submit">Valider</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</aside>
+			
 		</div>
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
