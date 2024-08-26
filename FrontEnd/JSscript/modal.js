@@ -79,8 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const imgElement = document.createElement('img');
             imgElement.src = imgURL;
             imgElement.alt = 'Image téléchargée';
-            imgElement.style.maxWidth = '100%'; // S'adapte à la largeur du conteneur
-            imgElement.style.maxHeight = '300px'; // Limite la hauteur de l'image
+            imgElement.style.maxWidth = '55%'; // S'adapte à la largeur du conteneur
+            imgElement.style.maxHeight = '180px'; // Limite la hauteur de l'image
+            imgElement.style.marginLeft = '118px'; // doit être placer au centtre de la section 
+            imgElement.style.objectFit = 'cover'; // Assure que l'image couvre toute la zone définie en conservant ses proportions
+            imgElement.style.overflow = 'hiden '; // Assure que les images sont coupées si elles dépassent les dimensions définies 
 
             // Récupérez la section image-placeholder
             const placeholder = document.querySelector('.image-placeholder');
