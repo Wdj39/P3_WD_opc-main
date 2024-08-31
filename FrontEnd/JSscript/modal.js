@@ -48,8 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Gérer l'ouverture, le remplissage, et la soumission du formulaire d'ajout de photo
-    const openAddPhotoModaleButton = document.querySelector(".add-photo-btn");
-    const addPhotoModale = document.getElementById("modale-add-photo");
+    const uploadForm = document.getElementById('uploadForm');
     const uploadBtn = document.getElementById("upload-btn");
     const photoUploadInput = document.getElementById("file");
     const categorySelect = document.getElementById("category");
@@ -79,17 +78,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const imgElement = document.createElement('img');
             imgElement.src = imgURL;
             imgElement.alt = 'Image téléchargée';
-            imgElement.style.maxWidth = '55%'; // S'adapte à la largeur du conteneur
-            imgElement.style.maxHeight = '180px'; // Limite la hauteur de l'image
-            imgElement.style.marginLeft = '118px'; // doit être placer au centtre de la section 
-            imgElement.style.objectFit = 'cover'; // Assure que l'image couvre toute la zone définie en conservant ses proportions
-            imgElement.style.overflow = 'hiden '; // Assure que les images sont coupées si elles dépassent les dimensions définies 
+            imgElement.style.maxWidth = '55%';
+            imgElement.style.maxHeight = '180px';
+            imgElement.style.marginLeft = '118px';
+            imgElement.style.objectFit = 'cover';
+            imgElement.style.overflow = 'hidden';
 
             // Récupérez la section image-placeholder
             const placeholder = document.querySelector('.image-placeholder');
 
             // Videz la section et ajoutez l'image
-            placeholder.innerHTML = ''; // Supprime l'icône, le bouton et le texte d'aide
+            placeholder.innerHTML = '';
             placeholder.appendChild(imgElement);
 
             // Vérifier si tous les champs sont remplis
@@ -101,10 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkFormCompletion() {
         if (photoUploadInput.files.length > 0 && titleInput.value.trim() !== '' && categorySelect.value !== '') {
             submitPhotoButton.disabled = false;
-            submitPhotoButton.style.backgroundColor = '#1D6154'; // Changer la couleur du bouton
+            submitPhotoButton.style.backgroundColor = '#1D6154';
         } else {
             submitPhotoButton.disabled = true;
-            submitPhotoButton.style.backgroundColor = ''; // Réinitialiser la couleur du bouton
+            submitPhotoButton.style.backgroundColor = '';
         }
     }
 
@@ -143,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert('Photo ajoutée avec succès !');
                 addImageToGallery(data.imageUrl, title, data.id);  // Ajouter l'image à la galerie dynamiquement
                 regenerateForm(); // Régénérer le formulaire après l'ajout de la photo
-                closeModale(addPhotoModale);
+                closeModale(modale);
             } else {
                 alert('Erreur lors de l ajout de la photo.');
             }
@@ -177,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fonction pour ajouter l'image nouvellement ajoutée dans la galerie
     function addImageToGallery(imageUrl, title, id) {
         const photoGallery = document.querySelector('.photo-gallery');
+        const gallery = document.querySelector('.gallery');
 
         // Créez un nouvel élément pour le projet
         const photoItem = document.createElement('div');
@@ -214,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Ajouter le nouvel élément à la galerie
         photoGallery.appendChild(photoItem);
+        gallery.appendChild(photoItem.cloneNode(true)); // Ajouter également à la section .gallery
     }
 
     function closeModale(modale) {
