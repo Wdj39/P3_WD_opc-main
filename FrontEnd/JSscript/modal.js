@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Créez un nouvel élément pour le projet
         const photoItem = document.createElement('div');
         photoItem.classList.add('photo-item');
+        photoItem.setAttribute('data-id', id); // Ajout d'un identifiant unique pour l'image
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .then(response => {
                     if (response.ok) {
-                        photoItem.remove(); // Retirer l'image de la galerie
+                        removeImageFromGallery(id); // Supprimer l'image de la galerie
                     } else {
                         alert('Erreur lors de la suppression de l image.');
                     }
@@ -96,6 +97,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Ajouter l'élément créé à la galerie photo
         photoGallery.appendChild(photoItem);
+    }
+
+    // Fonction pour supprimer une image des deux sections (gallery et photo-gallery)
+    function removeImageFromGallery(id) {
+        // Supprimer l'image de la section .gallery
+        const galleryItem = document.querySelector(`.gallery .photo-item[data-id='${id}']`);
+        if (galleryItem) {
+            galleryItem.remove();
+        }
+
+        // Supprimer l'image de la section .photo-gallery
+        const photoGalleryItem = document.querySelector(`.photo-gallery .photo-item[data-id='${id}']`);
+        if (photoGalleryItem) {
+            photoGalleryItem.remove();
+        }
     }
 
     // Gérer l'ouverture, le remplissage, et la soumission du formulaire d'ajout de photo
@@ -231,6 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Créez un nouvel élément pour le projet
         const photoItem = document.createElement('div');
         photoItem.classList.add('photo-item');
+        photoItem.setAttribute('data-id', id); // Ajout d'un identifiant unique pour l'image
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
@@ -257,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .then(response => {
                     if (response.ok) {
-                        photoItem.remove(); // Retirer l'image de la galerie
+                        removeImageFromGallery(id); // Supprimer l'image de la galerie
                     } else {
                         alert('Erreur lors de la suppression de l image.');
                     }
@@ -270,9 +287,4 @@ document.addEventListener("DOMContentLoaded", () => {
         gallery.appendChild(photoItem);
     }
 
-    function closeModale(modale) {
-        modale.style.display = "none";
-        modale.setAttribute("aria-hidden", "true");
-        document.querySelector("body").style.overflow = "auto";
-    }
 });
