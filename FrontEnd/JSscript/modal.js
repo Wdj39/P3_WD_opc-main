@@ -6,9 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const openModaleButton = document.querySelector(".js-modale");
     const closeButtons = document.querySelectorAll(".js-modale-close");
 
+    function resetModale() {
+        document.getElementById('photo-gallery-section').style.display = 'block';
+        document.getElementById('add-photo-section').style.display = 'none';
+    }
+
     if (token) {
         openModaleButton.addEventListener("click", (e) => {
             e.preventDefault();
+            
+            // Réinitialiser la modale avant de l'ouvrir
+            resetModale();
+
             modale.style.display = "flex";
             modale.setAttribute("aria-hidden", "false");
             document.querySelector("body").style.overflow = "hidden";
@@ -228,6 +237,11 @@ document.addEventListener("DOMContentLoaded", () => {
         imgElement.alt = title || 'Image';
         photoItem.appendChild(imgElement);
 
+        // Créez un élément <p> pour le titre de l'image
+        const titleElement = document.createElement('p');
+        titleElement.textContent = title;
+        photoItem.appendChild(titleElement);
+
         // Ajouter l'icône de suppression (si nécessaire)
         const deleteIcon = document.createElement('div');
         deleteIcon.classList.add('delete-icon');
@@ -251,7 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch(error => console.error('Erreur lors de la suppression de l image :', error));
             }
         });
-        photoItem.appendChild(deleteIcon);
 
         // Ajouter le nouvel élément à la galerie
         gallery.appendChild(photoItem);
