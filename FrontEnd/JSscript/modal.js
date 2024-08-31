@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const token = sessionStorage.getItem("token");
 
-    // Gérer l'ouverture et la fermeture de la première modale
+    // Gérer l'ouverture et la fermeture de la modale
     const modale = document.getElementById("modale");
     const openModaleButton = document.querySelector(".js-modale");
     const closeButtons = document.querySelectorAll(".js-modale-close");
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const photoGallery = document.querySelector('.photo-gallery');
                     photoGallery.innerHTML = ''; // Vider la galerie avant d'ajouter les travaux
                     data.forEach(work => {
-                        addImageToGallery(work.imageUrl, work.title, work.id);
+                        addImageToPhotoGallery(work.imageUrl, work.title, work.id);
                     });
                 })
                 .catch(error => console.error('Erreur lors de la récupération des travaux :', error));
@@ -45,6 +45,48 @@ document.addEventListener("DOMContentLoaded", () => {
             modale.setAttribute("aria-hidden", "true");
             document.querySelector("body").style.overflow = "auto";
         }
+    }
+
+    // Fonction pour ajouter des images à la galerie photo dans la modale
+    function addImageToPhotoGallery(imageUrl, title, id) {
+        const photoGallery = document.querySelector('.photo-gallery');
+
+        // Créez un nouvel élément pour le projet
+        const photoItem = document.createElement('div');
+        photoItem.classList.add('photo-item');
+
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.alt = title || 'Image';
+        photoItem.appendChild(imgElement);
+
+        // Ajouter l'icône de suppression
+        const deleteIcon = document.createElement('div');
+        deleteIcon.classList.add('delete-icon');
+        deleteIcon.innerHTML = '<i class="fa fa-trash"></i>';
+        deleteIcon.addEventListener('click', () => {
+            if (confirm('Voulez-vous vraiment supprimer cette image ?')) {
+                // Supprimer l'image via l'API
+                fetch(`http://localhost:5678/api/works/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        photoItem.remove(); // Retirer l'image de la galerie
+                    } else {
+                        alert('Erreur lors de la suppression de l image.');
+                    }
+                })
+                .catch(error => console.error('Erreur lors de la suppression de l image :', error));
+            }
+        });
+        photoItem.appendChild(deleteIcon);
+
+        // Ajouter l'élément créé à la galerie photo
+        photoGallery.appendChild(photoItem);
     }
 
     // Gérer l'ouverture, le remplissage, et la soumission du formulaire d'ajout de photo
@@ -140,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             if (data && data.id) {
                 alert('Photo ajoutée avec succès !');
-                addImageToGallery(data.imageUrl, title, data.id);  // Ajouter l'image à la galerie dynamiquement
+                addImageToGallery(data.imageUrl, title, data.id);  // Ajouter l'image à la section .gallery
                 regenerateForm(); // Régénérer le formulaire après l'ajout de la photo
                 closeModale(modale);
             } else {
@@ -175,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fonction pour ajouter l'image nouvellement ajoutée dans la galerie
     function addImageToGallery(imageUrl, title, id) {
-        const photoGallery = document.querySelector('.photo-gallery');
         const gallery = document.querySelector('.gallery');
 
         // Créez un nouvel élément pour le projet
@@ -213,8 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         photoItem.appendChild(deleteIcon);
 
         // Ajouter le nouvel élément à la galerie
-        photoGallery.appendChild(photoItem);
-        gallery.appendChild(photoItem.cloneNode(true)); // Ajouter également à la section .gallery
+        gallery.appendChild(photoItem);
     }
 
     function closeModale(modale) {
